@@ -426,3 +426,16 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# CMake generované soubory a složky
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+compile_commands.json
+CMakeSettings.json
+
+# Složky s výsledným sestavením (Windows VS i Linux)
+out/
+build/
+bin/
