@@ -15,7 +15,7 @@ add_executable(
     src/math/Math.h
     src/math/Math.cpp
 
-)
+ "src/shapes/IShape.h" "src/shapes/Line.h" "src/shapes/Line.cpp" "src/shapes/Rect.cpp" "src/shapes/Circle.h" "src/shapes/Circle.cpp")
 
 if(MSVC)
     target_compile_options(drawing PRIVATE /W4 /WX)
