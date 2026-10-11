@@ -12,6 +12,10 @@ void Rect::transform(const Matrix3x3& m) {
 	p4 = m * p4;
 }
 
-void Rect::draw(Canvas& canvas) const {
-
+void Rect::draw(ICanvas& canvas) const {
+	// obdelnik kreslim jako ctyri cary, aby se dal v svg vykreslovat i obdelnik, ktery neni zarovnany s osami
+	canvas.drawLine(p1.x, p1.y, p2.x, p2.y);
+	canvas.drawLine(p2.x, p2.y, p3.x, p3.y);
+	canvas.drawLine(p3.x, p3.y, p4.x, p4.y);
+	canvas.drawLine(p4.x, p4.y, p1.x, p1.y);
 }

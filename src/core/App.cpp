@@ -87,7 +87,6 @@ int App::processLine(std::string line) {
 		if (w <= 0 || h <= 0) return -1; // overeni, zda neni zadana nulova sirka nebo vyska
 		if (!isEnd()) return -1;
 
-		// !!! inmplicitni konverze int na double - nevadí to?
 		addShape(std::make_unique<Rect>(x, y, w, h));
 		return 1;
 	}
