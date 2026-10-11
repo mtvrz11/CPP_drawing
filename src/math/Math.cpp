@@ -23,14 +23,14 @@ const double& Matrix3x3::operator()(int row, int col) const {
 	return data[row][col];
 }
 
-Matrix3x3 Matrix3x3::createTranslation(double tx, double ty) {
+Matrix3x3 Matrix3x3::createTranslation(int tx, int ty) {
 	Matrix3x3 translation;
 	translation(0, 2) = tx;
 	translation(1, 2) = ty;
 	return translation;
 }
 
-Matrix3x3 Matrix3x3::createRotation(double cx, double cy, double a) {
+Matrix3x3 Matrix3x3::createRotation(int cx, int cy, double a) {
 	// posun pocatku souradneho systemu do zadaneho stredu
 	Matrix3x3 to_origin = createTranslation(-cx, -cy);
 
@@ -53,7 +53,7 @@ Matrix3x3 Matrix3x3::createRotation(double cx, double cy, double a) {
 
 }
 
-Matrix3x3 Matrix3x3::createScale(double cx, double cy, double f) {
+Matrix3x3 Matrix3x3::createScale(int cx, int cy, double f) {
 	// posun pocatku souradneho systemu do zadaneho stredu
 	Matrix3x3 to_origin = createTranslation(-cx, -cy);
 
