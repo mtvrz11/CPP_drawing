@@ -1,7 +1,6 @@
 #pragma once
 #include "../math/Math.h"
-
-class Canvas;
+#include "../renderer/ICanvas.h"
 
 /// <summary>
 /// rozhrani tvar pro reprezentaci geometrickeho objektu ve 2D
@@ -24,5 +23,5 @@ public:
 	/// vykresli objekt na platno
 	/// </summary>
 	/// <param name="canvas">platno</param>
-	virtual void draw(Canvas& canvas) const = 0;
+	virtual void draw(ICanvas& canvas) const = 0;
 };

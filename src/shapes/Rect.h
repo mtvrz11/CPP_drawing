@@ -22,5 +22,5 @@ public:
 
 	void transform(const Matrix3x3& m) override;
 
-	void draw(Canvas& canvas) const override;
+	void draw(ICanvas& canvas) const override;
 };

@@ -21,9 +21,9 @@ add_executable(
     src/shapes/Rect.cpp
     src/shapes/Circle.h
     src/shapes/Circle.cpp
-    "src/core/App.h"
-    "src/core/App.cpp"
-)
+    src/core/App.h
+    src/core/App.cpp
+ "src/renderer/ICanvas.h" "src/renderer/SvgCanvas.h" "src/renderer/SvgCanvas.cpp" "src/renderer/PgmCanvas.h" "src/renderer/PgmCanvas.cpp")
 
 if(MSVC)
     target_compile_options(drawing PRIVATE /W4 /WX)

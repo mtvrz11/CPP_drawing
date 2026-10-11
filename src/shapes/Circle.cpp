@@ -18,6 +18,6 @@ void Circle::transform(const Matrix3x3& m) {
 	radius = std::sqrt((tmp.x - center.x) * (tmp.x - center.x) + (tmp.y - center.y) * (tmp.y - center.y));
 }
 
-void Circle::draw(Canvas& canvas) const {
-
+void Circle::draw(ICanvas& canvas) const {
+	canvas.drawCircle(center.x, center.y, radius);
 }

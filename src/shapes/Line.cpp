@@ -10,6 +10,6 @@ void Line::transform(const Matrix3x3& m) {
 	p2 = m * p2;
 }
 
-void Line::draw(Canvas& canvas) const {
-
+void Line::draw(ICanvas& canvas) const {
+	canvas.drawLine(p1.x, p1.y, p2.x, p2.y);
 }
