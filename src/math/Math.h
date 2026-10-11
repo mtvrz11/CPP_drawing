@@ -45,7 +45,7 @@ public:
 	/// <param name="tx">posun v ose x</param>
 	/// <param name="ty">posun v ose y</param>
 	/// <returns>nova matice translace</returns>
-	static Matrix3x3 createTranslation(double tx, double ty);
+	static Matrix3x3 createTranslation(int tx, int ty);
 
 	/// <summary>
 	/// vytvori a vrati matici rotace zadany uhel podle zadaneho stredu
@@ -54,7 +54,7 @@ public:
 	/// <param name="cy">y-ova souradnice stredu</param>
 	/// <param name="a">uhel VE STUPNICH - kladny smer otaceni proti smeru hodinovych rucicek</param>
 	/// <returns>nova matice rotace</returns>
-	static Matrix3x3 createRotation(double cx, double cy, double a);
+	static Matrix3x3 createRotation(int cx, int cy, double a);
 
 	/// <summary>
 	/// vytvori a vrati matici scale zadanym faktorem podle zadaneho stredu
@@ -63,7 +63,7 @@ public:
 	/// <param name="cy">y-ova souradnice stredu</param>
 	/// <param name="f">faktor</param>
 	/// <returns>nova matice scale</returns>
-	static Matrix3x3 createScale(double cx, double cy, double f);
+	static Matrix3x3 createScale(int cx, int cy, double f);
 
 };
 
