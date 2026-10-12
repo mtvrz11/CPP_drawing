@@ -4,7 +4,6 @@
 
 #include <vector>
 #include <string>
-#include <cstdint>
 #include <fstream>
 
 /// <summary>
@@ -12,7 +11,7 @@
 /// </summary>
 class PgmCanvas : public ICanvas {
 	int width, height;
-	std::vector<uint8_t> pixels;
+	std::vector<int> pixels; // omezeni - kvuli int bude mit vektor trochu vetsi velikost nez pri pouziti treba unit8_t, ale nebudu to pak zase muset castovat pri zapisu do souboru...
 	std::ofstream file; // vystupni soubor
 
 	/// <summary>
@@ -21,7 +20,15 @@ class PgmCanvas : public ICanvas {
 	/// <param name="x">x-ova souradnice pixelu</param>
 	/// <param name="y">y-ova souradnice pixelu</param>
 	/// <param name="color">barva</param>
-	void setPixel(int x, int y, uint8_t color);
+	void setPixel(int x, int y, int color);
+
+	/// <summary>
+	/// maluje cary o tloustce 2 px - obarvi ctverec 4 px, kde zadany px tvori levy horni roh tohoto ctverce
+	/// </summary>
+	/// <param name="x">x-ova sourdnice ciloveho px</param>
+	/// <param name="y">y-ova souradnice ciloveho px</param>
+	/// <param name="color">barva pixelu</param>
+	void brush2Px(int x, int y, int color);
 
 public:
 	/// <summary>

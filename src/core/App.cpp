@@ -5,12 +5,14 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream> // !!! jen kvuli vypisum - pozdeji mozno odstranit
 
 int App::processFile(const std::string& filename) {
 
 	std::ifstream file(filename);
 	if (!file.is_open()) {
 		// chyba
+		std::cout << "soubor nenalezen" << std::endl;
 		return -1;
 	}
 
@@ -23,6 +25,7 @@ int App::processFile(const std::string& filename) {
 
 		if (pl == -1) {
 			// chyba
+			std::cout << "chybny vstup" << std::endl;
 			return -1;
 		}
 
@@ -135,5 +138,11 @@ void App::addShape(std::unique_ptr<IShape> shape) {
 void App::applyTransformation(const Matrix3x3& m) {
 	for (auto& shape : shapes) {
 		shape->transform(m);
+	}
+}
+
+void App::drawAllShapes(ICanvas& canvas) const {
+	for (const auto& shape : shapes) {
+		shape->draw(canvas);
 	}
 }

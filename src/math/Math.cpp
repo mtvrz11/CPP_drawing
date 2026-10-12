@@ -81,7 +81,7 @@ Matrix3x3 operator*(const Matrix3x3& m1, const Matrix3x3& m2) {
 	Matrix3x3 result;
 
 	for (int i = 0; i < 3; i++) {
-		for (int j = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
 			result(i, j) = m1(i, 0) * m2(0, j) + m1(i, 1) * m2(1, j) + m1(i, 2) * m2(2, j);
 		}
 	}

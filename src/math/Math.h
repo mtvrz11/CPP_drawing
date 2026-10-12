@@ -48,11 +48,11 @@ public:
 	static Matrix3x3 createTranslation(int tx, int ty);
 
 	/// <summary>
-	/// vytvori a vrati matici rotace zadany uhel podle zadaneho stredu
+	/// vytvori a vrati matici rotace o zadany uhel podle zadaneho stredu
 	/// </summary>
 	/// <param name="cx">x-ova souradnice stredu</param>
 	/// <param name="cy">y-ova souradnice stredu</param>
-	/// <param name="a">uhel VE STUPNICH - kladny smer otaceni proti smeru hodinovych rucicek</param>
+	/// <param name="a">uhel VE STUPNICH</param>
 	/// <returns>nova matice rotace</returns>
 	static Matrix3x3 createRotation(int cx, int cy, double a);
 

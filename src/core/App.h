@@ -42,4 +42,6 @@ public:
 	/// <param name="filename">nazev zdrojoveho souboru</param>
 	/// <returns>pocet nactenych prikazu nebo -1 pri chybe</returns>
 	int processFile(const std::string& filename);
+
+	void drawAllShapes(ICanvas& canvas) const;
 };

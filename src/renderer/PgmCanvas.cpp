@@ -48,9 +48,17 @@ void PgmCanvas::drawLine(double x1, double y1, double x2, double y2) {
     int sx = x < end_x ? 1 : -1;
     int sy = y < end_y ? 1 : -1;
     int err = dx + dy;
+    //bool is_horizontal = (dx > -dy);
 
     while (true) {
-        setPixel(x, y, 0);
+        brush2Px(x, y, 0);
+
+        /*if (is_horizontal) {
+            setPixel(x, y + 1, 0);
+        }
+        else {
+            setPixel(x + 1, y, 0);
+        }*/
 
         // cil
         if (x == end_x && y == end_y) break;
@@ -74,14 +82,14 @@ void PgmCanvas::drawCircle(double cx, double cy, double r) {
 
     while (x >= y) {
         // vykresleni 8 bodu po celem obvodu naraz
-        setPixel(x0 + x, y0 + y, 0);
-        setPixel(x0 + y, y0 + x, 0);
-        setPixel(x0 - y, y0 + x, 0);
-        setPixel(x0 - x, y0 + y, 0);
-        setPixel(x0 - x, y0 - y, 0);
-        setPixel(x0 - y, y0 - x, 0);
-        setPixel(x0 + y, y0 - x, 0);
-        setPixel(x0 + x, y0 - y, 0);
+        brush2Px(x0 + x, y0 + y, 0);
+        brush2Px(x0 + y, y0 + x, 0);
+        brush2Px(x0 - y, y0 + x, 0);
+        brush2Px(x0 - x, y0 + y, 0);
+        brush2Px(x0 - x, y0 - y, 0);
+        brush2Px(x0 - y, y0 - x, 0);
+        brush2Px(x0 + y, y0 - x, 0);
+        brush2Px(x0 + x, y0 - y, 0);
 
         if (err <= 0) {
             y += 1;
@@ -94,7 +102,14 @@ void PgmCanvas::drawCircle(double cx, double cy, double r) {
     }
 }
 
-void PgmCanvas::setPixel(int x, int y, uint8_t color) {
+void PgmCanvas::brush2Px(int x, int y, int color) {
+    setPixel(x, y, color);
+    setPixel(x + 1, y, color);
+    setPixel(x + 1, y + 1, color);
+    setPixel(x, y + 1, color);
+}
+
+void PgmCanvas::setPixel(int x, int y, int color) {
     // clipping - vse mimo platno ignoruji
     if (x >= 0 && x < width && y >= 0 && y < height) {
         pixels[y * width + x] = color;
