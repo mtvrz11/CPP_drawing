@@ -2,7 +2,8 @@
  * @file    Math.h
  * @author  Matìj Tvrz
  * @date    10/2026
- * @brief   Deklarace tridy Math, která poskytuje metody pro vytváøení transformaèních matic a pøetìžuje operátory pro násobení matic a vektorù (bodù).
+ * @brief   Deklarace modulu Math, která poskytuje tridy Matrix3x3 a Point, metody pro vytváøení transformaèních matic
+ *			a pøetìžuje operátory pro násobení matic a vektorù (bodù).
  */
 
 #pragma once
@@ -11,7 +12,9 @@
 /// struktura reprezentujici bod ve 2D v homogennich souradnicich (jako sloupcovy vektor)
 /// </summary>
 struct Point {
-	double x, y, w = 1.0;
+	double x = 0.0;
+	double y = 0.0;
+	double w = 1.0;
 };
 
 /// <summary>

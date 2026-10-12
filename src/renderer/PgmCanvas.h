@@ -21,6 +21,9 @@ class PgmCanvas : public ICanvas {
 	std::vector<int> pixels; // omezeni - kvuli int bude mit vektor trochu vetsi velikost nez pri pouziti treba unit8_t, ale nebudu to pak zase muset castovat pri zapisu do souboru...
 	std::ofstream file; // vystupni soubor
 
+	static constexpr int WHITE = 255;
+	static constexpr int BLACK = 0;
+
 	/// <summary>
 	/// nastavi pixel na danych souradnicich v obrazku na danou barvu, provadi orez na velikost platna - vse mimo platno ignoruje
 	/// </summary>

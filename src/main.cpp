@@ -13,7 +13,18 @@
 #include "./renderer/SvgCanvas.h"
 #include "./renderer/PgmCanvas.h"
 
+#ifdef _MSC_VER
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+#endif
+
 int main(int argc, char* argv[]) {
+
+#ifdef _MSC_VER
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
 	try {
 		if (argc != 4) {
 			throw std::invalid_argument{ "Spatny pocet argumentu. Pouziti: drawing.exe <vstup> <vystup> <velikost>." };
@@ -24,10 +35,10 @@ int main(int argc, char* argv[]) {
 			if (idx == std::string::npos) {
 				return -1;
 			}
-			return idx;
+			return static_cast<int>(idx);
 			};
 
-		std::string size = argv[3];
+		std::string size = argv[3]; // ma tam byt 3
 		int x_idx = findDelimiterIdx(size, 'x');
 		if (x_idx == -1) {
 			throw std::invalid_argument{ "Spatny format argumentu <velikost>. Spravny format: <sirka:int>x<vyska:int>." };
@@ -65,7 +76,7 @@ int main(int argc, char* argv[]) {
 		int cmd_count = app.processFile(ifile);
 		app.drawAllShapes(*canvas);
 
-		std::cout << cmd_count << std::endl;
+		std::cout << "OK\n" << cmd_count << std::endl;
 	}
 	catch (const std::exception& e) {
 		std::cerr << "CHYBA: " << e.what() << std::endl;

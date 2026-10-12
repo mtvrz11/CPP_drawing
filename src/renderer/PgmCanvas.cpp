@@ -19,9 +19,9 @@ PgmCanvas::PgmCanvas(const std::string filename, int w, int h)
     // hlavicka pro pgm
     file << "P2\n"
         << width << " " << height << "\n"
-        << "255\n";
+        << std::to_string(WHITE) << "\n";
 
-	pixels.assign(width * height, 255); // zvetseni vektoru na pozadovanou velikost a naplneni bilou barvou
+	pixels.assign(width * height, WHITE); // zvetseni vektoru na pozadovanou velikost a naplneni bilou barvou
 }
 
 PgmCanvas::~PgmCanvas() {
@@ -52,7 +52,7 @@ void PgmCanvas::drawLine(double x1, double y1, double x2, double y2) {
     //bool is_horizontal = (dx > -dy);
 
     while (true) {
-        brush2Px(x, y, 0);
+        brush2Px(x, y, BLACK);
 
         // jsme v cili
         if (x == end_x && y == end_y) break;
@@ -76,14 +76,14 @@ void PgmCanvas::drawCircle(double cx, double cy, double r) {
 
     while (x >= y) {
         // vykresleni 8 bodu po celem obvodu naraz
-        brush2Px(x0 + x, y0 + y, 0);
-        brush2Px(x0 + y, y0 + x, 0);
-        brush2Px(x0 - y, y0 + x, 0);
-        brush2Px(x0 - x, y0 + y, 0);
-        brush2Px(x0 - x, y0 - y, 0);
-        brush2Px(x0 - y, y0 - x, 0);
-        brush2Px(x0 + y, y0 - x, 0);
-        brush2Px(x0 + x, y0 - y, 0);
+        brush2Px(x0 + x, y0 + y, BLACK);
+        brush2Px(x0 + y, y0 + x, BLACK);
+        brush2Px(x0 - y, y0 + x, BLACK);
+        brush2Px(x0 - x, y0 + y, BLACK);
+        brush2Px(x0 - x, y0 - y, BLACK);
+        brush2Px(x0 - y, y0 - x, BLACK);
+        brush2Px(x0 + y, y0 - x, BLACK);
+        brush2Px(x0 + x, y0 - y, BLACK);
 
         if (err <= 0) {
             y += 1;

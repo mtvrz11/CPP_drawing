@@ -2,11 +2,13 @@
  * @file    Math.cpp
  * @author  Matìj Tvrz
  * @date    10/2026
- * @brief   Implementace metod tøídy Math a pøetížených operátorù pro násobení matic a vektorù.
+ * @brief   Implementace metod modulu Math (tøídy Point a Matrix3x3) a pøetížených operátorù pro násobení matic a vektorù.
  */
 
 #include "Math.h"
 #include <cmath>
+
+constexpr double PI = 3.14159265358979323846;
 
 Matrix3x3::Matrix3x3() {
 	// vytvoreni jednotkove matice
@@ -42,8 +44,7 @@ Matrix3x3 Matrix3x3::createRotation(int cx, int cy, double a) {
 	Matrix3x3 to_origin = createTranslation(-cx, -cy);
 
 	// prevod stupnu na radiany
-	double pi = 2 * asin(1.0);
-	double a_rad = (a / 180.0) * pi;
+	double a_rad = (a / 180.0) * PI;
 
 	// vytvoreni matice rotace
 	Matrix3x3 rot;

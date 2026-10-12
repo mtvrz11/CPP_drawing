@@ -32,7 +32,7 @@ int App::processFile(const std::string& filename) {
 			pl = processLine(line);
 		}
 		catch (const std::exception& e) {
-			throw std::runtime_error{ "Chyba na radku " + std::to_string(line_number) + ":" + e.what() };
+			throw std::runtime_error{ "Chyba na radku " + std::to_string(line_number) + ": " + e.what() };
 		}
 
 		if (pl) {
