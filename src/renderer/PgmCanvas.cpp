@@ -1,3 +1,10 @@
+/**
+ * @file    PgmCanvas.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Implementace metod tøídy PgmCanvas.
+ */
+
 #include "PgmCanvas.h"
 #include <cmath>
 

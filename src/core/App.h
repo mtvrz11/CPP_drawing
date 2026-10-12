@@ -1,3 +1,10 @@
+/**
+ * @file    App.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tridy App, ktera drží stav aplikace, otevírá vstupní soubor a øídí zapisování do výstupního souboru.
+ */
+
 #pragma once
 
 #include <vector>

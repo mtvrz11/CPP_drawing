@@ -1,3 +1,10 @@
+/**
+ * @file    SvgCanvas.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tøídy SvgCanvas, která pøevádí interní reprezentací primitiv na formát svg.
+ */
+
 #pragma once
 #include "ICanvas.h"
 #include <fstream>

@@ -1,3 +1,10 @@
+/**
+ * @file    PgmCanvas.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tøídy PgmCanvas, která pomocí Bressenhamova algoritmu rasterizuje vektorová primitiva.
+ */
+
 #pragma once
 
 #include "ICanvas.h"

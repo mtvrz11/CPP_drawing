@@ -1,3 +1,10 @@
+/**
+ * @file    Rect.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tøídy Rect, která je interni reprezentací obdélníku ve 2D o zadaných parametrech.
+ */
+
 #pragma once
 #include "IShape.h"
 

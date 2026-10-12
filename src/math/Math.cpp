@@ -1,3 +1,10 @@
+/**
+ * @file    Math.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Implementace metod tøídy Math a pøetížených operátorù pro násobení matic a vektorù.
+ */
+
 #include "Math.h"
 #include <cmath>
 

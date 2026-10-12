@@ -1,3 +1,10 @@
+/**
+ * @file    IShape.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace rozhraní IShape, které deklaruje metody, které budou muset být implementovány v potomcích - transformace a vykreslení.
+ */
+
 #pragma once
 #include "../math/Math.h"
 #include "../renderer/ICanvas.h"

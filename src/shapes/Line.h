@@ -1,3 +1,10 @@
+/**
+ * @file    Line.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tøídy Line, která je vnitøní reprezentací úseèky o zadaných parametrech.
+ */
+
 #pragma once
 #include "IShape.h"
 

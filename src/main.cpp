@@ -1,3 +1,10 @@
+/**
+ * @file    main.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Vstupni bod aplikace pro kresleni ve 2D.
+ */
+
 #include <iostream>
 #include <string>
 

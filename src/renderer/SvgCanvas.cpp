@@ -1,3 +1,10 @@
+/**
+ * @file    SvgCanvas.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Implementace metod tøídy SvgCanvas.
+ */
+
 #include "SvgCanvas.h"
 
 SvgCanvas::SvgCanvas(const std::string& filename, int w, int h) {

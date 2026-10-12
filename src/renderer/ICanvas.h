@@ -1,3 +1,10 @@
+/**
+ * @file    ICanvas.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace rozhraní ICanvas, které deklaruje požadované funkce pro obecné plátno.
+ */
+
 #pragma once
 
 /// <summary>

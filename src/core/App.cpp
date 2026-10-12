@@ -1,3 +1,10 @@
+/**
+ * @file    App.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Implementace metod tøídy App.
+ */
+
 #include "App.h"
 #include "../shapes/Line.h"
 #include "../shapes/Circle.h"

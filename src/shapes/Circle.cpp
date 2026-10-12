@@ -1,3 +1,10 @@
+/**
+ * @file    Circle.cpp
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Implementace metod tøídy Circle.
+ */
+
 #include "Circle.h"
 #include <cmath>
 

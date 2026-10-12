@@ -1,3 +1,10 @@
+/**
+ * @file    Circle.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tøídy Circle, která je vnitøní reprezentací kružnice o zadaných parametrech.
+ */
+
 #pragma once
 #include "IShape.h"
 

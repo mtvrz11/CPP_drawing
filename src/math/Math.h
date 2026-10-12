@@ -1,3 +1,10 @@
+/**
+ * @file    Math.h
+ * @author  Matìj Tvrz
+ * @date    10/2026
+ * @brief   Deklarace tridy Math, která poskytuje metody pro vytváøení transformaèních matic a pøetìžuje operátory pro násobení matic a vektorù (bodù).
+ */
+
 #pragma once
 
 /// <summary>
