@@ -11,7 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Seznam všech souborù projektu
 add_executable(
     drawing 
-    src/core/main.cpp 
+    "src/main.cpp" 
     src/math/Math.h
     src/math/Math.cpp
     src/shapes/Line.h

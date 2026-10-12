@@ -3,8 +3,7 @@
 SvgCanvas::SvgCanvas(const std::string& filename, int w, int h) {
 	file.open(filename);
 	if (!file.is_open()) {
-		// chyba
-		return;
+		throw std::runtime_error{ "Nepodarilo se otevrit vstupni soubor: " + filename };
 	}
 
 	file << "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" << w << "\" height=\"" << h << "\">\n"; // zalozeni platna dane velikosti

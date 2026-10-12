@@ -20,8 +20,9 @@ class App {
 	/// zpracuje jednu radku - rozpozna prikaz a jeho parametry, vytvori instanci tvaru a prida jej do vektoru shapes
 	/// </summary>
 	/// <param name="line">radek ke zpracovani</param>
-	/// <returns>1 pri zpracovani validniho prikazu, 0 pri zpracovani prazdneho radku, -1 pri chybnem vstupu</returns>
-	int processLine(std::string line);
+	/// <returns>true pri zpracovani validniho prikazu, false pri prazdnem radku nebo radku jen s komentarem</returns>
+	/// <exception cref="std::invalid_argument">Vyhozena v pripade syntakticke chyby ve zpracovavane radce</exception>
+	bool processLine(std::string line);
 
 	/// <summary>
 	/// prida jednu instanci tvaru do vektoru shapes
@@ -40,8 +41,13 @@ public:
 	/// nacte zdrojovy soubor radek po radku, naplni vektor shapes a provede vsechny transformace
 	/// </summary>
 	/// <param name="filename">nazev zdrojoveho souboru</param>
-	/// <returns>pocet nactenych prikazu nebo -1 pri chybe</returns>
+	/// <returns>pocet nactenych prikazu</returns>
+	/// <exception cref="std::runtime_error">Vyhozena v pripade, ze se nepodari otevrit soubor nebo ze soubor obsahuje neplatne prikazy</exception>
 	int processFile(const std::string& filename);
 
+	/// <summary>
+	/// Vykresli vsechny tvary na zapsane na aktualnim platne do vystupniho soboru.
+	/// </summary>
+	/// <param name="canvas">Platno, ktere ma byt prekresleno</param>
 	void drawAllShapes(ICanvas& canvas) const;
 };

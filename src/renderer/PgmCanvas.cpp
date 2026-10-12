@@ -6,8 +6,7 @@ PgmCanvas::PgmCanvas(const std::string filename, int w, int h)
 {
     file.open(filename);
     if (!file.is_open()) {
-        // chyba
-        return;
+        throw std::runtime_error{ "Nepodarilo se otevrit vstupni soubor: " + filename };
     }
 
     // hlavicka pro pgm
@@ -19,11 +18,6 @@ PgmCanvas::PgmCanvas(const std::string filename, int w, int h)
 }
 
 PgmCanvas::~PgmCanvas() {
-    if (!file.is_open()) {
-        // chyba
-        return;
-    }
-
     // vypsani vektoru pixels do souboru (formatovane pro vizualni kontrolu)
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -53,14 +47,7 @@ void PgmCanvas::drawLine(double x1, double y1, double x2, double y2) {
     while (true) {
         brush2Px(x, y, 0);
 
-        /*if (is_horizontal) {
-            setPixel(x, y + 1, 0);
-        }
-        else {
-            setPixel(x + 1, y, 0);
-        }*/
-
-        // cil
+        // jsme v cili
         if (x == end_x && y == end_y) break;
 
         int e2 = 2 * err;

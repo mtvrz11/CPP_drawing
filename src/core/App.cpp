@@ -5,41 +5,38 @@
 
 #include <fstream>
 #include <sstream>
-#include <iostream> // !!! jen kvuli vypisum - pozdeji mozno odstranit
 
 int App::processFile(const std::string& filename) {
 
 	std::ifstream file(filename);
 	if (!file.is_open()) {
-		// chyba
-		std::cout << "soubor nenalezen" << std::endl;
-		return -1;
+		throw std::runtime_error{ "Nepodarilo se otevrit vstupni soubor." };
 	}
 
 	std::string line;
 	int cmd_count = 0;
+	int line_number = 0;
+	bool pl = false;
 
 	// prochazim po radcich
 	while (std::getline(file, line)) {
-		auto pl = processLine(line);
-
-		if (pl == -1) {
-			// chyba
-			std::cout << "chybny vstup" << std::endl;
-			return -1;
+		line_number++;
+		try {
+			pl = processLine(line);
+		}
+		catch (const std::exception& e) {
+			throw std::runtime_error{ "Chyba na radku " + std::to_string(line_number) + ":" + e.what() };
 		}
 
-		if (pl == 1) {
+		if (pl) {
 			cmd_count++;
 		}
-
-		// pri prazdnem radku (pl == 0) nevyhazuji chybu, ale ani nepricitam dalsi prikaz 
 	}
 
 	return cmd_count;
 }
 
-int App::processLine(std::string line) {
+bool App::processLine(std::string line) {
 	// oriznuti komentare
 	size_t pos = line.find('#');
 	if (pos != std::string::npos) {
@@ -57,15 +54,16 @@ int App::processLine(std::string line) {
 
 
 	if (!(ss >> command)) {
-		return 0; // prazdny radek
+		return false; // prazdny radek
 	}
 
 	if (command == "line") {
 		int x1, y1, x2, y2;
 
-		if (!(ss >> x1 >> y1 >> x2 >> y2)) return -1; // zoskani ciselnych hodnot
-		if (x1 == x2 && y1 == y2) return -1; // overeni, zda pocatecni a koncovy bod nesplyvaji
-		if (!isEnd()) return -1;
+		if (!(ss >> x1 >> y1 >> x2 >> y2) || !isEnd()) // zoskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu line. Spravny format: line <x1:int> <y1:int> <x2:int> <y2:int>." };
+		if (x1 == x2 && y1 == y2) // overeni, zda pocatecni a koncovy bod nesplyvaji
+			throw std::invalid_argument{ "Pocatecni a koncovy bod usecky splyvaji. Musi byt ruzne." };
 
 		addShape(std::make_unique<Line>(x1, y1, x2, y2));
 		return 1;
@@ -75,9 +73,10 @@ int App::processLine(std::string line) {
 		int cx, cy;
 		double r;
 
-		if (!(ss >> cx >> cy >> r)) return -1; // ziskani ciselnych hodnot
-		if (r <= 0) return -1; // overeni, zda je polomer kladny nenulovy
-		if (!isEnd()) return -1;
+		if (!(ss >> cx >> cy >> r) || !isEnd()) // ziskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu circle. Spravny format: circle <cx:int> <cy:int> <r:double>." };
+		if (r <= 0) // overeni, zda je polomer kladny nenulovy
+			throw std::invalid_argument{ "Polomer musi byt realne cislo vetsi nez 0." };
 
 		addShape(std::make_unique<Circle>(cx, cy, r));
 		return 1;
@@ -86,9 +85,10 @@ int App::processLine(std::string line) {
 	if (command == "rect") {
 		int x, y, w, h;
 
-		if (!(ss >> x >> y >> w >> h)) return -1; // ziskani ciselnych hodnot
-		if (w <= 0 || h <= 0) return -1; // overeni, zda neni zadana nulova sirka nebo vyska
-		if (!isEnd()) return -1;
+		if (!(ss >> x >> y >> w >> h) || !isEnd()) // ziskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu rect. Spravny format: rect <x:int> <y:int> <w:int> <h:int>." };
+		if (w <= 0 || h <= 0) // overeni, zda neni zadana nulova sirka nebo vyska
+			throw std::invalid_argument{ "Sirka i vyska musi byt kladne nenulove cislo." };
 
 		addShape(std::make_unique<Rect>(x, y, w, h));
 		return 1;
@@ -97,8 +97,8 @@ int App::processLine(std::string line) {
 	if (command == "translate") {
 		int x, y;
 
-		if (!(ss >> x >> y)) return -1; // ziskani ciselnych hodnot
-		if (!isEnd()) return -1;
+		if (!(ss >> x >> y) || !isEnd()) // ziskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu translate. Spravny format: translate <x:int> <y:int>." };
 
 		applyTransformation(Matrix3x3::createTranslation(x, y));
 		return 1;
@@ -108,8 +108,8 @@ int App::processLine(std::string line) {
 		int x, y;
 		double a;
 
-		if (!(ss >> x >> y >> a)) return -1; // ziskani ciselnych hodnot
-		if (!isEnd()) return -1;
+		if (!(ss >> x >> y >> a) || !isEnd()) // ziskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu rotate. Spravny format: rotate <x:int> <y:int> <a:double>." };
 
 		applyTransformation(Matrix3x3::createRotation(x, y, a));
 		return 1;
@@ -119,16 +119,16 @@ int App::processLine(std::string line) {
 		int x, y;
 		double f;
 
-		if (!(ss >> x >> y >> f)) return -1; // ziskani ciselnych hodnot
-		if (f == 0) return -1; // overeni, zda faktor neni nulovy
-		if (!isEnd()) return -1;
+		if (!(ss >> x >> y >> f) || !isEnd()) // ziskani ciselnych hodnot
+			throw std::invalid_argument{ "Spatny format v parametrech prikazu scale. Spravny format: scale <x:int> <y:int> <f:double>." };
+		if (f == 0) // overeni, zda faktor neni nulovy
+			throw std::invalid_argument{ "Faktor musi byt realne nenulove cislo." };
 
 		applyTransformation(Matrix3x3::createScale(x, y, f));
 		return 1;
 	}
 
-	// radek zacinal necim, co nebyl platny prikaz
-	return -1;
+	throw std::invalid_argument{ "Neplatny prikaz: " + command + "."};
 }
 
 void App::addShape(std::unique_ptr<IShape> shape) {

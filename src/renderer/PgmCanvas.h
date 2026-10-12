@@ -37,6 +37,7 @@ public:
 	/// <param name="filename">nazev ciloveho souboru</param>
 	/// <param name="w">sirka obrazku</param>
 	/// <param name="h">vyska obrazku</param>
+	/// <exception cref="std::runtime_exception">Vyhozena v pripade, ze se nepodari najit soubor</exception>
 	PgmCanvas(const std::string filename, int w, int h);
 
 	/// <summary>

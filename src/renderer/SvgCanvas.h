@@ -15,6 +15,7 @@ public:
 	/// <param name="filename">do jakeho souboru se ma ulozit textovy popis</param>
 	/// <param name="w">sirka platna (v px)</param>
 	/// <param name="h">vyska platna (v px)</param>
+	/// <exception cref="std::runtime_exception">Vyhozena v pripade, ze se nepodari najit soubor</exception>
 	SvgCanvas(const std::string& filename, int w, int h);
 
 	/// <summary>
