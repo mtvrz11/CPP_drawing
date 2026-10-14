@@ -11,7 +11,7 @@
 /// <summary>
 /// trida pro reprezentaci obdelniku ve 2D pomoci jeho ctyr vrcholu
 /// </summary>
-class Rect : public IShape {
+class Rect final : public IShape {
 	Point p1;
 	Point p2;
 	Point p3;

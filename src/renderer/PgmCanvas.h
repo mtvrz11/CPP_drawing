@@ -16,7 +16,7 @@
 /// <summary>
 /// platno pro vykresleni ve formatu pgm
 /// </summary>
-class PgmCanvas : public ICanvas {
+class PgmCanvas final : public ICanvas {
 	int width, height;
 	std::vector<int> pixels; // omezeni - kvuli int bude mit vektor trochu vetsi velikost nez pri pouziti treba unit8_t, ale nebudu to pak zase muset castovat pri zapisu do souboru...
 	std::ofstream file; // vystupni soubor

@@ -11,7 +11,7 @@
 /// <summary>
 /// trida pro reprezentaci usecky ve 2D - dedi od rozhrani IShape
 /// </summary>
-class Line : public IShape {
+class Line final : public IShape {
 	Point p1;
 	Point p2;
 

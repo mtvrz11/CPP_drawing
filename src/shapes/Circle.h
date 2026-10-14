@@ -11,7 +11,7 @@
 /// <summary>
 /// trida pro reprezentaci kruhu pomoci stredu a polomeru
 /// </summary>
-class Circle : public IShape {
+class Circle final : public IShape {
 	Point center;
 	double radius;
 

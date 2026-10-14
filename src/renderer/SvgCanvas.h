@@ -12,7 +12,7 @@
 /// <summary>
 /// platno pro vykreslovani ve formatu svg
 /// </summary>
-class SvgCanvas : public ICanvas {
+class SvgCanvas final : public ICanvas {
 	std::ofstream file;
 
 public:
